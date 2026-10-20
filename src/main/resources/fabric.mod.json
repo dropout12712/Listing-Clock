@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "listingclock",
+  "version": "${version}",
+  "name": "ListingClock",
+  "description": "Local, confirmation-based DonutSMP auction expiration timers.",
+  "authors": ["ListingClock contributors"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": { "client": ["net.listingclock.ListingClockClient"] },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": ">=0.141.6+1.21.11"
+  }
+}
