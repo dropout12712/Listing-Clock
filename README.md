@@ -1,18 +1,20 @@
-- usage
-/listingclock toggle - show or hide the HUD.
+## usage
 
-/listingclock list - show tracked listings and IDs.
+- `/listingclock toggle` - show or hide the HUD.
+- `/listingclock list` - show tracked listings and IDs.
+- `/listingclock clear <id>` - remove one local timer.
+- `/listingclock clearall` - remove all local timers.
+- `/listingclock help` - show available commands.
 
-/listingclock clear <id> - remove one local timer.
+---
 
-/listingclock clearall - remove all local timers.
+## how to build
 
-/listingclock help - show available commands.
+open command prompt in project root
 
------------------------
-how to build
-open command prompt in project root 
-> gradlew build
+```bat
+gradlew build
+```
 
-requires java 21 
-built jar is in build/libs
+requires java 21  
+built jar is in `build/libs`
