@@ -1,4 +1,5 @@
 package net.listingclock.storage;
+//
 
 import net.listingclock.core.Listing;
 import org.junit.jupiter.api.Test;

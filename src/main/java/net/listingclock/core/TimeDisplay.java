@@ -1,4 +1,5 @@
 package net.listingclock.core;
+//
 
 import java.time.Duration;
 import java.util.Locale;

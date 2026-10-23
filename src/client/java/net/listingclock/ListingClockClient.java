@@ -1,4 +1,5 @@
 package net.listingclock;
+//
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ClientModInitializer;
