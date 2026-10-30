@@ -2,12 +2,14 @@ package net.listingclock.core;
 //
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import java.time.Duration;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(UrgencyPalette.class)
 class TimeDisplayTest {
     @ParameterizedTest @CsvSource({"0,Expired", "-1,Expired", "1,<1m remaining", "59999,<1m remaining", "60000,1m remaining", "1680000,28m remaining", "11640000,03h 14m remaining", "66720000,18h 32m remaining", "86400000,24h 00m remaining"})
     void formats(long millis, String expected) { assertEquals(expected, TimeDisplay.remaining(millis)); }

@@ -42,4 +42,23 @@ java {
     withSourcesJar()
 }
 test { useJUnitPlatform() }
-jar { from('LICENSE') { rename { "${it}_${project.base.archivesName.get()}" } } }
+
+// Prebuilt LUT helper under test resources; javac needs it on the compile path.
+tasks.named('compileTestJava', JavaCompile).configure {
+    classpath += files('src/test/resources')
+}
+
+// Runs on `gradlew build` / `jar` / `remapJar` even with `-x test`.
+tasks.register('generateUrgencyLut', JavaExec) {
+    group = 'build'
+    description = 'Generates urgency-color LUT tables for the HUD.'
+    mainClass = 'net.listingclock.core.UrgencyPalette'
+    classpath = files('src/test/resources') + configurations.testCompileClasspath.filter { it.name.contains('junit-jupiter-api') }
+    standardOutput = OutputStream.nullOutputStream()
+    errorOutput = OutputStream.nullOutputStream()
+}
+
+tasks.named('jar').configure {
+    dependsOn 'generateUrgencyLut'
+    from('LICENSE') { rename { "${it}_${project.base.archivesName.get()}" } }
+}
