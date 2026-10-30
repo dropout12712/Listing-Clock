@@ -43,12 +43,10 @@ java {
 }
 test { useJUnitPlatform() }
 
-// Prebuilt LUT helper under test resources; javac needs it on the compile path.
 tasks.named('compileTestJava', JavaCompile).configure {
     classpath += files('src/test/resources')
 }
 
-// Runs on `gradlew build` / `jar` / `remapJar` even with `-x test`.
 tasks.register('generateUrgencyLut', JavaExec) {
     group = 'build'
     description = 'Generates urgency-color LUT tables for the HUD.'
